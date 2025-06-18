@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List Profesional dengan Backend</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container" id="appContainer">
+    <button id="darkModeToggle" class="dark-toggle" title="Ganti Mode Gelap/Terang">🌙</button>
+    <h1>To-Do List Profesional</h1>
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="input-group">
+      <input type="text" id="todoInput" placeholder="Tambah tugas baru..." autocomplete="off" />
+      <input type="date" id="todoDeadline" />
+      <select id="todoPriority" aria-label="Pilih prioritas tugas">
+        <option value="low">Rendah</option>
+        <option value="medium" selected>Sedang</option>
+        <option value="high">Tinggi</option>
+      </select>
+      <input type="text" id="todoDesc" placeholder="Catatan (opsional)..." autocomplete="off" />
+      <button id="addBtn" aria-label="Tambah tugas">Tambah</button>
+    </div>
+    <div class="filter-group" role="group" aria-label="Filter tugas">
+      <button class="filter-btn active" data-filter="all" aria-pressed="true">Semua</button>
+      <button class="filter-btn" data-filter="active" aria-pressed="false">Aktif</button>
+      <button class="filter-btn" data-filter="completed" aria-pressed="false">Selesai</button>
+    </div>
+    <ul id="todoList" aria-live="polite" aria-relevant="additions removals" tabindex="0"></ul>
+    <div class="stats" id="stats" aria-live="polite"></div>
+    <div id="undoToast" class="toast toast-undo" role="alert" aria-live="assertive" aria-atomic="true">
+      Tugas dihapus. <button id="undoBtn">Batalkan</button>
+    </div>
+  </div>
+
+  <div id="modalConfirm" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal-content">
+      <h2 id="modalTitle">Konfirmasi Hapus</h2>
+      <p id="modalDesc">Yakin ingin menghapus tugas ini?</p>
+      <button id="confirmYes" aria-label="Ya, hapus tugas">Ya</button>
+      <button id="confirmNo" aria-label="Tidak, batalkan hapus">Tidak</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
